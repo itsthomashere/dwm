@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "󰒱", "", "󰝚", " ", "", "", "󰏆", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,11 +66,17 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "drun" };
-static const char *powermenucmd[] = {"rofi", "-show" "power-menu" "-modi", "power-menu:~/.local/bin/rofi-power-menu", "--choices=reboot/shutdown/suspend/logout"};
+static const char *powermenucmd[] = {"rofi", "-show" "power-menu" "-modi", "power-menu:~/.local/bin/rofi-power-menu", "--choices=reboot/shutdown/suspend/logout", NULL};
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%",   NULL };
-static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%",   NULL };
+/* Multimedia keys */
+static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%",   NULL };
+static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%",   NULL };
 static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+static const char *next_track[] = { "playerctl", "next", NULL };
+static const char *prev_track[] = { "playerctl", "previous", NULL };
+static const char *play_pause[] = { "playerctl", "play-pause", NULL };
+static const char *bright_up[] = { "brightnessctl", "set", "5%+", NULL };
+static const char *bright_down[] = { "brightnessctl", "set", "5%-", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -91,9 +97,14 @@ static const Key keys[] = {
     { MODKEY,                       XK_k,      incnmaster,   {.i = -1 } }, // up
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
-    { 0, XF86XK_AudioMute,        spawn, {.v = mute_vol } },
-    { 0, XF86XK_AudioLowerVolume, spawn, {.v = down_vol } },
-    { 0, XF86XK_AudioRaiseVolume, spawn, {.v = up_vol } },
+    { 0, XF86XK_AudioMute,          spawn, {.v = mute_vol } },
+    { 0, XF86XK_AudioLowerVolume,   spawn, {.v = down_vol } },
+    { 0, XF86XK_AudioRaiseVolume,   spawn, {.v = up_vol } },
+    { 0, XF86XK_AudioPlay,          spawn, {.v = play_pause } },
+    { 0, XF86XK_AudioNext,          spawn, {.v = next_track } },
+    { 0, XF86XK_AudioPrev,          spawn, {.v = prev_track } },
+    { 0, XF86XK_MonBrightnessDown,     spawn, {.v = bright_down } },
+    { 0, XF86XK_MonBrightnessUp,     spawn, {.v = bright_up } },
 	TAGKEYS(                        XK_exclam,                      0)
 	TAGKEYS(                        XK_dollar,                      1)
 	TAGKEYS(                        XK_braceleft,                      2)
