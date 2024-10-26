@@ -66,8 +66,10 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "drun" };
+static const char *druncmd[] = {"rofi", "-show", "run"};
 static const char *powermenucmd[] = {"rofi", "-show", "power-menu", "-modi", "\"power-menu:~/.local/bin/rofi-power-menu --choices=reboot/shutdown/suspend/logout\"", NULL};
 static const char *termcmd[]  = { "st", NULL };
+static const char *screenshotcmd[] = {"gnome-screenshot", "-i", NULL};
 /* Multimedia keys */
 static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%",   NULL };
 static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%",   NULL };
@@ -81,6 +83,7 @@ static const char *bright_down[] = { "brightnessctl", "set", "5%-", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = druncmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = powermenucmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -90,7 +93,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
     { MODKEY,                       XK_h,      focusstack,   {.i = -1 } }, // left
     { MODKEY,                       XK_l,      focusstack,   {.i = +1 } }, // right
@@ -98,6 +103,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_k,      incnmaster,   {.i = -1 } }, // up
 	{ MODKEY|ShiftMask,             XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_l,      setmfact,       {.f = +0.05} },
+    { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshotcmd}  },
     { 0, XF86XK_AudioMute,          spawn, {.v = mute_vol } },
     { 0, XF86XK_AudioLowerVolume,   spawn, {.v = down_vol } },
     { 0, XF86XK_AudioRaiseVolume,   spawn, {.v = up_vol } },
