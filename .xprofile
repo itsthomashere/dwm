@@ -1,8 +1,0 @@
-picom -b &
-pasystray &
-nitrogen --restore &
-ibus-daemon -rxRd &
-nm-applet &
-
-/home/dacbui308/suckless/dwm-bar/dwm_bar.sh &
-
