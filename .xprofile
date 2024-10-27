@@ -1,0 +1,10 @@
+lxsession -s DWM -e dwm &
+picom -b &
+pasystray &
+nitrogen --restore &
+ibus-daemon -rxRd &
+nm-applet &
+glava >/dev/null & disown &
+
+/home/dacbui308/suckless/dwm-bar/dwm_bar.sh >/dev/null 2>&1 &
+
