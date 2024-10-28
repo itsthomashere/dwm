@@ -3,7 +3,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 0;        /* gaps between windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
@@ -14,11 +14,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Cascadia Code NF:size=14" };
 static const char dmenufont[]       = "Cascadia Code NF:size=14";
-static const char col_gray1[]       = "#1e1e2e";
-static const char col_gray2[]       = "#b4befe";
-static const char col_gray3[]       = "#cdd6f4";
-static const char col_gray4[]       = "#cba6f7";
-static const char col_cyan[]        = "#1e1e2e";
+static const char col_gray1[]       = "#1d2021";
+static const char col_gray2[]       = "#d3689b";
+static const char col_gray3[]       = "#ebdbb2";
+static const char col_gray4[]       = "#cc241d";
+static const char col_cyan[]        = "#1d2021";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_cyan },
@@ -71,8 +71,8 @@ static const char *powermenucmd[] = {"rofi", "-show", "power-menu", "-modi", "\"
 static const char *termcmd[]  = { "st", NULL };
 static const char *screenshotcmd[] = {"gnome-screenshot", "-i", NULL};
 /* Multimedia keys */
-static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%",   NULL };
-static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%",   NULL };
+static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",   NULL };
+static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",   NULL };
 static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 static const char *next_track[] = { "playerctl", "next", NULL };
 static const char *prev_track[] = { "playerctl", "previous", NULL };
