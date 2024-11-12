@@ -1,4 +1,3 @@
-#include <X11/XF86keysym.h>
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -45,11 +44,14 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
+ 	{ "[\\]",      dwindle },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+ 	{ "[@]",      spiral },
 };
 
 /* key definitions */
@@ -80,6 +82,7 @@ static const char *play_pause[] = { "playerctl", "play-pause", NULL };
 static const char *bright_up[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *bright_down[] = { "brightnessctl", "set", "5%-", NULL };
 
+#include <X11/XF86keysym.h>;
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -93,9 +96,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_space,  setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
     { MODKEY,                       XK_h,      focusstack,   {.i = -1 } }, // left
     { MODKEY,                       XK_l,      focusstack,   {.i = +1 } }, // right
