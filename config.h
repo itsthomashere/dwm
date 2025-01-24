@@ -141,15 +141,15 @@ static const Key keys[] = {
     { 0, XF86XK_MonBrightnessDown,     spawn, {.v = bright_down } },
     { 0, XF86XK_MonBrightnessUp,     spawn, {.v = bright_up } },
 	TAGKEYS(                        XK_exclam,                      0)
-	TAGKEYS(                        XK_dollar,                      1)
-	TAGKEYS(                        XK_braceleft,                      2)
-	TAGKEYS(                        XK_braceright,                      3)
+	TAGKEYS(                        XK_braceleft,                      1)
+	TAGKEYS(                        XK_parenleft,                      2)
+	TAGKEYS(                        XK_bracketleft,                      3)
 	TAGKEYS(                        XK_percent,                      4)
 	TAGKEYS(                        XK_asciicircum,                      5)
 	TAGKEYS(                        XK_plus,                      6)
-	TAGKEYS(                        XK_asterisk,                      7)
-	TAGKEYS(                        XK_parenleft,                      8)
-	TAGKEYS(                        XK_parenright,                      9)
+	TAGKEYS(                        XK_bracketright,                      7)
+	TAGKEYS(                        XK_parenright,                      8)
+	TAGKEYS(                        XK_braceright,                      9)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
