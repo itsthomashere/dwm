@@ -37,6 +37,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Steam",    NULL,       NULL,       0,            0,           -1,      1 },
+	{ "steam_app",NULL,       NULL,       0,            0,           -1,      1 },
 };
 
 /* layout(s) */
@@ -88,7 +90,7 @@ static const char *bright_down[] = { "brightnessctl", "set", "5%-", NULL };
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "font",               STRING,  &font },
+		{ "dwmfont",               STRING,  &font },
 		{ "dmenufont",          STRING,  &dmenufont },
 		{ "normbgcolor",        STRING,  &normbgcolor },
 		{ "normbordercolor",    STRING,  &normbordercolor },
@@ -140,16 +142,16 @@ static const Key keys[] = {
     { 0, XF86XK_AudioPrev,          spawn, {.v = prev_track } },
     { 0, XF86XK_MonBrightnessDown,     spawn, {.v = bright_down } },
     { 0, XF86XK_MonBrightnessUp,     spawn, {.v = bright_up } },
-	TAGKEYS(                        XK_exclam,                      0)
-	TAGKEYS(                        XK_braceleft,                      1)
-	TAGKEYS(                        XK_parenleft,                      2)
-	TAGKEYS(                        XK_bracketleft,                      3)
+	TAGKEYS(                        XK_bracketleft,                      0)
+	TAGKEYS(                        XK_bracketright,                      1)
+	TAGKEYS(                        XK_braceleft,                      2)
+	TAGKEYS(                        XK_braceright,                      3)
 	TAGKEYS(                        XK_percent,                      4)
 	TAGKEYS(                        XK_asciicircum,                      5)
 	TAGKEYS(                        XK_plus,                      6)
-	TAGKEYS(                        XK_bracketright,                      7)
-	TAGKEYS(                        XK_parenright,                      8)
-	TAGKEYS(                        XK_braceright,                      9)
+	TAGKEYS(                        XK_asterisk,                      7)
+	TAGKEYS(                        XK_parenleft,                      8)
+	TAGKEYS(                        XK_parenright,                      9)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
