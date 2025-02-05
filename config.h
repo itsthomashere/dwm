@@ -37,6 +37,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Steam",    NULL,       NULL,       0,            0,           -1,      1 },
+	{ "steam_app",NULL,       NULL,       0,            0,           -1,      1 },
 };
 
 /* layout(s) */
@@ -88,7 +90,7 @@ static const char *bright_down[] = { "brightnessctl", "set", "5%-", NULL };
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "font",               STRING,  &font },
+		{ "dwmfont",               STRING,  &font },
 		{ "dmenufont",          STRING,  &dmenufont },
 		{ "normbgcolor",        STRING,  &normbgcolor },
 		{ "normbordercolor",    STRING,  &normbordercolor },
